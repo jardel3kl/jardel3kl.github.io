@@ -1,116 +1,104 @@
 <script>
-    import { onMount } from 'svelte';
-
-    let score = 0;
-    let questionCount = 0;
-    let showResult = false;
-    let message = "";
-
-    const answers = {
-        1: "B",
-        2: "C",
-        3: "A"
-    };
-
-    function checkAnswer(question, selected) {
-        if (answers[question] === selected) {
-            score++;
-        }
-        questionCount++;
-
-        if (questionCount === Object.keys(answers).length) {
-            calculateResult();
-        }
-    }
-
-    function calculateResult() {
-        if (score === 3) {
-            message = `Parabéns, amor! Você acertou tudo ❤️! Você realmente me conhece.`;
-        } else if (score === 2) {
-            message = `Muito bem, meu amor! Você acertou ${score} de 3 perguntas. 😊`;
+    import { filmes, gêneros } from '$lib/filmes.js';
+  
+    let gênerosSelecionados = $state([]);
+    let filtrados = $state(filmes.slice());
+    let busca = $state('');
+  
+    function filtrartitulo(event) {
+      console.log(busca);
+      //  se o campo de busca estiver vazio nao faz nada e encerre a funcão comando return
+      if (busca == '') {
+        filtrados = filmes.slice();
+        return;
+      }
+      filtrados = [];
+      //pra cada filme dos meus filmes
+      for (const filme of filmes) {
+        //  se este o titulo deste filme conter o campo de busca
+        if (filme.título.includes(busca)) {
+          //    adicione este filme a lista de filmes filtrados
+          filtrados.push(filme);
+          //  senao
         } else {
-            message = `Tudo bem, amor! Você acertou ${score} de 3. Ainda te amo muito! 🥰`;
+          //    exclua este filme da lista de filtrados
         }
-        showResult = true;
+      }
     }
-</script>
-
-<svelte:head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffe6e6;
-            color: #333;
-            margin: 0;
-            padding: 0;
+  
+    function filtrarGenero(event) {
+      if (event.target.checked) {
+        gênerosSelecionados.push(event.target.value);
+      } else {
+        gênerosSelecionados.splice(gênerosSelecionados.indexOf(event.target.value), 1);
+      }
+  
+      if (gênerosSelecionados.length == 0) {
+        filtrados = filmes.slice();
+      } else {
+        filtrados = [];
+        for (const filme of filmes) {
+          for (const gênero of gênerosSelecionados) {
+            if (filme.gêneros.includes(gênero)) {
+              filtrados.push(filme);
+              break;
+            }
+          }
         }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-        h1 {
-            color: #ff4d4d;
-        }
-        button {
-            background-color: #ff4d4d;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #e63939;
-        }
-        .result {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #ff4d4d;
-        }
-    </style>
-</svelte:head>
-
-<main>
-    <div class="container">
-        <h1>Quiz para Minha Namorada 💕</h1>
-        <p>Responda essas perguntas e veja o quanto você me conhece!</p>
-
-        {#if !showResult}
-            <div id="quiz">
-                <div>
-                    <p><strong>1. Qual é minha cor favorita?</strong></p>
-                    <button on:click="() => checkAnswer(1, 'A')">A) Azul</button>
-                    <button on:click="() => checkAnswer(1, 'B')">B) Vermelho</button>
-                    <button on:click="() => checkAnswer(1, 'C')">C) Verde</button>
-                </div>
-
-                <div>
-                    <p><strong>2. Qual filme eu amo assistir?</strong></p>
-                    <button on:click="() => checkAnswer(2, 'A')">A) Titanic</button>
-                    <button on:click="() => checkAnswer(2, 'B')">B) Vingadores</button>
-                    <button on:click="() => checkAnswer(2, 'C')">C) A Culpa é das Estrelas</button>
-                </div>
-
-                <div>
-                    <p><strong>3. Onde seria nossa viagem dos sonhos?</strong></p>
-                    <button on:click="() => checkAnswer(3, 'A')">A) Paris</button>
-                    <button on:click="() => checkAnswer(3, 'B')">B) Maldivas</button>
-                    <button on:click="() => checkAnswer(3, 'C')">C) Japão</button>
-                </div>
-            </div>
-        {/if}
-
-        {#if showResult}
-            <div class="result" id="result">
-                {message}
-            </div>
-        {/if}
+      }
+    }
+  </script>
+  
+  <div class="row align-items-center mb-3">
+    <div class="col">
+      <input
+        bind:value={busca}
+        oninput={filtrartitulo}
+        class="form-control"
+        placeholder="Filtrar..."
+      />
     </div>
-</main>
+    {#each gêneros as gênero}
+      <div class="col">
+        <div class="form-check form-check-inline">
+          <input
+            oninput={filtrarGenero}
+            class="form-check-input"
+            type="checkbox"
+            id={gênero}
+            value={gênero}
+          />
+          <label class="form-check-label" for={gênero}>{gênero}</label>
+        </div>
+      </div>
+    {/each}
+  </div>
+  <div class="row g-4">
+    {#each filtrados as filme}
+      <div class="col-md-6 col-xl-3">
+        <div class="card h-100">
+          <div class="row g-0">
+            <div class="col-3 col-sm-4">
+              <img src={filme.imagem} class="img-fluid rounded-start" alt="capa do filme" />
+              <a target="_blank" href={filme.referência} class="btn btn-outline-dark">Referências</a>
+            </div>
+            <div class="col-sm-8">
+              <div class="card-body">
+                <h5 class="card-title">{filme.título}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">{filme.ano}</h6>
+                <p class="card-text">{filme.sinopse}</p>
+                <p class="card-text">
+                  
+                  {#each filme.gêneros as gênero}
+                    <span class="badge text-bg-secondary mx-1">{gênero}</span>
+                  {/each}
+  
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/each}
+  </div>
+  
