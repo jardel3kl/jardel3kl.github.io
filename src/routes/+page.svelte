@@ -1,11 +1,8 @@
 <script>
-    import { onMount } from 'svelte';
-
     let score = 0;
-    let questionCount = 0;
+    let currentQuestion = 1;
     let showResult = false;
     let message = "";
-    const selectedAnswers = {};
 
     const answers = {
         1: "A",
@@ -16,16 +13,14 @@
     };
 
     function checkAnswer(question, selected) {
-        if (selectedAnswers[question]) return; // Impede de alterar uma resposta já selecionada
-
-        selectedAnswers[question] = selected;
         if (answers[question] === selected) {
             score++;
         }
-        questionCount++;
 
-        if (questionCount === Object.keys(answers).length) {
+        if (question === Object.keys(answers).length) {
             calculateResult();
+        } else {
+            currentQuestion++;
         }
     }
 
@@ -46,10 +41,7 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Claude_Monet_-_The_Japanese_Footbridge_and_the_Water_Lily_Pool%2C_Giverny.jpg/1920px-Claude_Monet_-_The_Japanese_Footbridge_and_the_Water_Lily_Pool%2C_Giverny.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
+            background-color: #ffe6e6;
             color: #333;
             margin: 0;
             padding: 0;
@@ -58,15 +50,15 @@
             max-width: 600px;
             margin: 50px auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            background: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
         }
         h1 {
-            color: #4d7c6b;
+            color: #ff4d4d;
         }
         button {
-            background-color: #4d7c6b;
+            background-color: #ff4d4d;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -76,16 +68,12 @@
             font-size: 16px;
         }
         button:hover {
-            background-color: #3b5f51;
+            background-color: #e63939;
         }
         .result {
             margin-top: 20px;
             font-size: 18px;
-            color: #4d7c6b;
-        }
-        .selected {
-            background-color: #3b5f51;
-            color: #fff;
+            color: #ff4d4d;
         }
     </style>
 </svelte:head>
@@ -93,104 +81,53 @@
 <main>
     <div class="container">
         <h1>Quiz para Minha Princesinha 💕</h1>
-        <p>Responda essas perguntas e veja o quanto você me conhece!</p>
 
         {#if !showResult}
             <div id="quiz">
-                <div>
-                    <p><strong>1. Com qual casal de desenho nós nos parecemos mais?</strong></p>
-                    <button 
-                        class:selected={selectedAnswers[1] === 'A'}
-                        on:click={() => checkAnswer(1, 'A')}>
-                        A) Zootopia
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[1] === 'B'}
-                        on:click={() => checkAnswer(1, 'B')}>
-                        B) A Dama e o Vagabundo
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[1] === 'C'}
-                        on:click={() => checkAnswer(1, 'C')}>
-                        C) A Bela e a Fera
-                    </button>
-                </div>
+                {#if currentQuestion === 1}
+                    <div>
+                        <p><strong>1. Com qual casal de desenho nós nos parecemos mais?</strong></p>
+                        <button on:click={() => checkAnswer(1, 'A')}>A) Zootopia</button>
+                        <button on:click={() => checkAnswer(1, 'B')}>B) A Dama e o Vagabundo</button>
+                        <button on:click={() => checkAnswer(1, 'C')}>C) A Bela e a Fera</button>
+                    </div>
+                {/if}
 
-                <div>
-                    <p><strong>2. Qual foi o primeiro dia que você falou comigo? (Pelo celular)</strong></p>
-                    <button 
-                        class:selected={selectedAnswers[2] === 'A'}
-                        on:click={() => checkAnswer(2, 'A')}>
-                        A) 17/07/2024
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[2] === 'B'}
-                        on:click={() => checkAnswer(2, 'B')}>
-                        B) 18/06/2024
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[2] === 'C'}
-                        on:click={() => checkAnswer(2, 'C')}>
-                        C) 23/07/2024
-                    </button>
-                </div>
+                {#if currentQuestion === 2}
+                    <div>
+                        <p><strong>2. Qual foi o primeiro dia que você falou comigo? (Pelo celular)</strong></p>
+                        <button on:click={() => checkAnswer(2, 'A')}>A) 17/07/2024</button>
+                        <button on:click={() => checkAnswer(2, 'B')}>B) 18/06/2024</button>
+                        <button on:click={() => checkAnswer(2, 'C')}>C) 23/07/2024</button>
+                    </div>
+                {/if}
 
-                <div>
-                    <p><strong>3. Qual foi o dia em que fomos ao cinema?</strong></p>
-                    <button 
-                        class:selected={selectedAnswers[3] === 'A'}
-                        on:click={() => checkAnswer(3, 'A')}>
-                        A) 04/10/2024
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[3] === 'B'}
-                        on:click={() => checkAnswer(3, 'B')}>
-                        B) 28/09/2024
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[3] === 'C'}
-                        on:click={() => checkAnswer(3, 'C')}>
-                        C) 29/09/2024
-                    </button>
-                </div>
+                {#if currentQuestion === 3}
+                    <div>
+                        <p><strong>3. Qual foi o dia em que fomos ao cinema?</strong></p>
+                        <button on:click={() => checkAnswer(3, 'A')}>A) 04/10/2024</button>
+                        <button on:click={() => checkAnswer(3, 'B')}>B) 28/09/2024</button>
+                        <button on:click={() => checkAnswer(3, 'C')}>C) 29/09/2024</button>
+                    </div>
+                {/if}
 
-                <div>
-                    <p><strong>4. Qual o meu quadro favorito?</strong></p>
-                    <button 
-                        class:selected={selectedAnswers[4] === 'A'}
-                        on:click={() => checkAnswer(4, 'A')}>
-                        A) A Ponte de Monet
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[4] === 'B'}
-                        on:click={() => checkAnswer(4, 'B')}>
-                        B) Os Girassóis
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[4] === 'C'}
-                        on:click={() => checkAnswer(4, 'C')}>
-                        C) A Noite Estrelada
-                    </button>
-                </div>
+                {#if currentQuestion === 4}
+                    <div>
+                        <p><strong>4. Qual o meu quadro favorito?</strong></p>
+                        <button on:click={() => checkAnswer(4, 'A')}>A) A Ponte de Monet</button>
+                        <button on:click={() => checkAnswer(4, 'B')}>B) Os Girassóis</button>
+                        <button on:click={() => checkAnswer(4, 'C')}>C) A Noite Estrelada</button>
+                    </div>
+                {/if}
 
-                <div>
-                    <p><strong>5. Quando foi a primeira vez que nos abraçamos?</strong></p>
-                    <button 
-                        class:selected={selectedAnswers[5] === 'A'}
-                        on:click={() => checkAnswer(5, 'A')}>
-                        A) Na Igreja
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[5] === 'B'}
-                        on:click={() => checkAnswer(5, 'B')}>
-                        B) No Enem
-                    </button>
-                    <button 
-                        class:selected={selectedAnswers[5] === 'C'}
-                        on:click={() => checkAnswer(5, 'C')}>
-                        C) No cinema
-                    </button>
-                </div>
+                {#if currentQuestion === 5}
+                    <div>
+                        <p><strong>5. Quando foi a primeira vez que nos abraçamos?</strong></p>
+                        <button on:click={() => checkAnswer(5, 'A')}>A) Na Igreja</button>
+                        <button on:click={() => checkAnswer(5, 'B')}>B) No Enem</button>
+                        <button on:click={() => checkAnswer(5, 'C')}>C) No cinema</button>
+                    </div>
+                {/if}
             </div>
         {/if}
 
