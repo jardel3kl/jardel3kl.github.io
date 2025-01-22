@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/filme">filme</a>
+                    <a class="nav-link" href="/sobre">Sobre</a>
                 </li>
             </ul>
         </div>
