@@ -1,7 +1,8 @@
 <nav class="navbar bg-body-tertiary">
-    <div class="container">
-      <a class="navbar-brand" href="/cartas">
-        <img src="https://static.vecteezy.com/system/resources/thumbnails/003/520/480/small_2x/location-icon-pin-point-map-outline-isolated-on-white-background-illustration-vector.jpg" alt="Bootstrap" width="30" height="24">
-      </a>
-    </div>
-  </nav>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTExL3YxMTgxLXR1LWVsZW1lbnQtMjUwLXAtbTN3cXR3dTEucG5n.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+      Home
+    </a>
+  </div>
+</nav>
