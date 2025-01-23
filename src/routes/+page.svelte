@@ -5,8 +5,8 @@
 
     // Função para alterar posição
     function moveZapdos() {
-        // Remove a animação ao alterar a posição
         if (zapdos) {
+            // Remove a animação ao alterar a posição
             zapdos.style.animation = "";
 
             // Atualiza a posição
@@ -24,7 +24,7 @@
     }
 
     onMount(() => {
-        // Garantir que o Zapdos tenha posição inicial
+        // Garantir que o Zapdos tenha posição inicial ao carregar
         if (zapdos) {
             zapdos.style.left = "0px";
             zapdos.style.top = "0px";
@@ -107,9 +107,9 @@
         <p>Bem-vindo ao seu site inspirado em Zapdos! Explore e sinta a energia elétrica.</p>
         <button on:click={() => alert("Explorando! ⚡")}>Explorar</button>
     </div>
-    <div>
+    <div
         bind:this={zapdos}
         class="zapdos"
         on:click={moveZapdos}
-    </div>
+    ></div>
 </div>
