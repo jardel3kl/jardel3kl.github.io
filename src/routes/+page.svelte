@@ -2,32 +2,40 @@
     import { onMount } from "svelte";
 
     let zapdos;
+    let velocity = { x: 5, y: 5 }; // Velocidade inicial
 
-    // Função para alterar posição
-    function moveZapdos() {
-        // Remove a animação ao alterar a posição
+    function updatePosition() {
         if (zapdos) {
-            zapdos.style.animation = "";
+            const zapdosRect = zapdos.getBoundingClientRect();
+            const containerWidth = window.innerWidth;
+            const containerHeight = window.innerHeight;
 
-            // Atualiza a posição
-            const left = Math.random() * (window.innerWidth - 150);
-            const top = Math.random() * (window.innerHeight - 150);
+            let newLeft = zapdos.offsetLeft + velocity.x;
+            let newTop = zapdos.offsetTop + velocity.y;
 
-            zapdos.style.left = `${left}px`;
-            zapdos.style.top = `${top}px`;
+            // Verificar colisão com as bordas
+            if (newLeft <= 0 || newLeft + zapdosRect.width >= containerWidth) {
+                velocity.x *= -1; // Inverte a direção no eixo X
+            }
 
-            // Reinicia a animação após a posição ser alterada
-            setTimeout(() => {
-                zapdos.style.animation = "zapdos-fly 5s linear infinite";
-            }, 10);
+            if (newTop <= 0 || newTop + zapdosRect.height >= containerHeight) {
+                velocity.y *= -1; // Inverte a direção no eixo Y
+            }
+
+            // Atualizar posição
+            zapdos.style.left = `${zapdos.offsetLeft + velocity.x}px`;
+            zapdos.style.top = `${zapdos.offsetTop + velocity.y}px`;
+
+            // Repetir o movimento
+            requestAnimationFrame(updatePosition);
         }
     }
 
     onMount(() => {
-        // Garantir que o Zapdos tenha posição inicial
         if (zapdos) {
             zapdos.style.left = "0px";
             zapdos.style.top = "0px";
+            requestAnimationFrame(updatePosition);
         }
     });
 </script>
@@ -67,21 +75,6 @@
         height: 150px;
         background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png') no-repeat center center;
         background-size: contain;
-        animation: zapdos-fly 5s linear infinite;
-        left: 0;
-        top: 0;
-    }
-
-    @keyframes zapdos-fly {
-        0% {
-            transform: translate(-100px, 0) scale(1);
-        }
-        50% {
-            transform: translate(100vw, -200px) scale(1.2);
-        }
-        100% {
-            transform: translate(-100px, 0) scale(1);
-        }
     }
 
     button {
@@ -102,13 +95,14 @@
 
 <div class="container">
     <div>
-        <h1>Zapdos-Inspired Homepage</h1>
-        <p>Bem-vindo ao seu site inspirado em Zapdos! Explore e sinta a energia elétrica.</p>
-        <button on:click={() => alert("Explorando! ⚡")}>Explorar</button>
-    </div>
+        <h1>ZAPDOS</h1>
+        <p>Pássaro Lendário Elétrico</p>
+        <a href="/pokedex">
+            <button>pokedex</button>
+          </a> 
+           </div>
     <div
         bind:this={zapdos}
         class="zapdos"
-        on:click={moveZapdos}
     ></div>
 </div>
