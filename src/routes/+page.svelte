@@ -6,25 +6,29 @@
     // Função para alterar posição
     function moveZapdos() {
         // Remove a animação ao alterar a posição
-        zapdos.style.animation = "";
+        if (zapdos) {
+            zapdos.style.animation = "";
 
-        // Atualiza a posição
-        const left = Math.random() * (window.innerWidth - 150);
-        const top = Math.random() * (window.innerHeight - 150);
+            // Atualiza a posição
+            const left = Math.random() * (window.innerWidth - 150);
+            const top = Math.random() * (window.innerHeight - 150);
 
-        zapdos.style.left = `${left}px`;
-        zapdos.style.top = `${top}px`;
+            zapdos.style.left = `${left}px`;
+            zapdos.style.top = `${top}px`;
 
-        // Reinicia a animação após a posição ser alterada
-        setTimeout(() => {
-            zapdos.style.animation = "zapdos-fly 5s linear infinite";
-        }, 10);
+            // Reinicia a animação após a posição ser alterada
+            setTimeout(() => {
+                zapdos.style.animation = "zapdos-fly 5s linear infinite";
+            }, 10);
+        }
     }
 
     onMount(() => {
         // Garantir que o Zapdos tenha posição inicial
-        zapdos.style.left = "0px";
-        zapdos.style.top = "0px";
+        if (zapdos) {
+            zapdos.style.left = "0px";
+            zapdos.style.top = "0px";
+        }
     });
 </script>
 
