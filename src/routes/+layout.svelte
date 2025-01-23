@@ -17,7 +17,7 @@ let { children } = $props();
       </ul>
     </div>
   </div>
-</nav>
+
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -26,7 +26,7 @@ let { children } = $props();
     </li>
   </ul>
 </div>
-
+</nav>
 
 
 {@render children()}
