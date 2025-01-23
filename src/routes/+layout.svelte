@@ -12,10 +12,6 @@ let { children } = $props();
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/carrinho">Carrinho</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/fibonati">Fibonacci</a>
         </li>
       </ul>
@@ -23,9 +19,13 @@ let { children } = $props();
   </div>
 </nav>
 
-
-
-
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/carrinho">Carrinho</a>
+    </li>
+  </ul>
+</div>
 
 
 
