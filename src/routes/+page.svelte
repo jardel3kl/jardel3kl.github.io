@@ -41,6 +41,8 @@
             border-radius: 50%;
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
             animation: zapdos-fly 5s linear infinite;
+            left: 0;
+            top: 0;
         }
 
         @keyframes zapdos-fly {
@@ -77,7 +79,6 @@
         <div>
             <h1>Zapdos-Inspired Homepage</h1>
             <p>Bem-vindo ao seu site inspirado em Zapdos! Explore e sinta a energia elétrica.</p>
-            <button onclick="alert('Explorando! ⚡')">Explorar</button>
         </div>
         <div class="zapdos"></div>
     </div>
@@ -88,12 +89,20 @@
 
         // Mudando a posição ao clicar
         zapdos.addEventListener('click', () => {
-            zapdos.style.animation = 'none';
-            zapdos.style.left = Math.random() * window.innerWidth + 'px';
-            zapdos.style.top = Math.random() * window.innerHeight + 'px';
+            // Remove a animação ao alterar a posição
+            zapdos.style.animation = '';
+
+            // Atualiza a posição
+            const left = Math.random() * (window.innerWidth - 150);
+            const top = Math.random() * (window.innerHeight - 150);
+
+            zapdos.style.left = `${left}px`;
+            zapdos.style.top = `${top}px`;
+
+            // Reinicia a animação após a posição ser alterada
             setTimeout(() => {
-                zapdos.style.animation = '';
-            }, 500);
+                zapdos.style.animation = 'zapdos-fly 5s linear infinite';
+            }, 10);
         });
     </script>
 </body>
