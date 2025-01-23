@@ -5,8 +5,8 @@
 
     // Função para alterar posição
     function moveZapdos() {
+        // Remove a animação ao alterar a posição
         if (zapdos) {
-            // Remove a animação ao alterar a posição
             zapdos.style.animation = "";
 
             // Atualiza a posição
@@ -24,7 +24,7 @@
     }
 
     onMount(() => {
-        // Garantir que o Zapdos tenha posição inicial ao carregar
+        // Garantir que o Zapdos tenha posição inicial
         if (zapdos) {
             zapdos.style.left = "0px";
             zapdos.style.top = "0px";
@@ -65,9 +65,8 @@
         position: absolute;
         width: 150px;
         height: 150px;
-        background: #FFD700;
-        border-radius: 50%;
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/145.png') no-repeat center center;
+        background-size: contain;
         animation: zapdos-fly 5s linear infinite;
         left: 0;
         top: 0;
