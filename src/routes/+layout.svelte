@@ -23,6 +23,9 @@ let { children } = $props();
         <li class="nav-item">
         <a class="nav-link" href="/filme">Filme</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pokedex">Pokedex</a>
+        </li>
       </ul>
     </div>
   </div>
