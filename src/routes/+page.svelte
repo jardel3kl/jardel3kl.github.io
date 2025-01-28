@@ -42,6 +42,7 @@
 
 <style>
     body {
+        background-color: yellow;
         margin: 0;
         padding: 0;
         background: linear-gradient(135deg, #FFD700, #FFEC8B);
