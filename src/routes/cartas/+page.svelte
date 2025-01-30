@@ -7,7 +7,7 @@
      
   {#each classes as classe}
   <div class="col">
-    <div class="card h-10" style="width: 18rem;">
+    <div class="card h-100" style="width: 30rem;heigth: 30rem;">
       <img src={classe.imgsrc} class="card-img-top" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{classe.nome}</h5>

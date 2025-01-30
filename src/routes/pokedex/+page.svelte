@@ -34,6 +34,10 @@
   />
     {#each filtrados as poke}
     <span class="badge text-bg-secondary mx-1">{poke.nome}</span>
+    
+<img src="{poke.img}" alt="">
  
                  
                 {/each}
+
+           

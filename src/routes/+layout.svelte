@@ -11,17 +11,9 @@ let { children } = $props();
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/sobre">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/fibonati">Fibonacci</a>
-        </li>
+ 
         <li class="nav-item">
           <a class="nav-link" href="/cartas">Cartas</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/filme">Filme</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/pokedex">Pokedex</a>

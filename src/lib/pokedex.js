@@ -1,6 +1,6 @@
 
 export const pokedex = [
-    { nome: 'Bulbasaur' },
+    { nome: 'Bulbasaur',img:'https://preview.redd.it/o6xv13fqedr41.jpg?auto=webp&s=f7d686c6df6bbefc2f3591a1d8c8d1323ca53379' },
     { nome: 'Ivysaur' },
     { nome: 'Venusaur' },
     { nome: 'Charmander' },
