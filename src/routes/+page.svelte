@@ -97,5 +97,4 @@
         class="zapdos"
     ></div>
 </div>
-<h1 style="background-color:rgb(255, 99, 71);">...</h1>
-
+ 
