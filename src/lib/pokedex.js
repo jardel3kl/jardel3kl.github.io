@@ -1,7 +1,7 @@
 export const pokedex = Array.from({ length: 151 }, (_, i) => ({
     nome: getPokemonName(i + 1),
     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png`,
-    tipo: getPokemonType(i + 1)
+    tipo: getPokemonType(i + 1) || "Tipo desconhecido"
 }));
 
 function getPokemonName(id) {
@@ -27,7 +27,7 @@ function getPokemonName(id) {
         'Aerodactyl', 'Snorlax', 'Articuno', 'Zapdos', 'Moltres', 'Dratini', 'Dragonair', 'Dragonite',
         'Mewtwo', 'Mew'
     ];
-    return names[id - 1];
+    return names[id - 1] || "Nome desconhecido";
 }
 
 function getPokemonType(id) {
@@ -42,15 +42,15 @@ function getPokemonType(id) {
         'Terra', 'Normal', 'Normal', 'Água', 'Água', 'Lutador', 'Lutador', 'Fogo',
         'Fogo', 'Água', 'Água', 'Água/Lutador', 'Psíquico', 'Psíquico', 'Psíquico', 'Lutador',
         'Lutador', 'Lutador', 'Grama/Venenoso', 'Grama/Venenoso', 'Grama/Venenoso', 'Água/Venenoso', 'Água/Venenoso',
-        'Pedra/Terra', 'Pedra/Terra', 'Pedra/Terra', 'Fogo', 'Fogo', 'Água/Psíquico', 'Água/Psíquico', 'Elétrico',
-        'Elétrico', 'Normal/Voador', 'Normal/Voador', 'Água', 'Água/Gelo', 'Venenoso', 'Venenoso',
+        'Pedra/Terra', 'Pedra/Terra', 'Pedra/Terra', 'Fogo', 'Fogo', 'Água/Psíquico', 'Água/Psíquico', 'Elétrico/Aço',
+        'Elétrico/Aço', 'Normal/Voador', 'Normal/Voador', 'Água', 'Água/Gelo', 'Venenoso', 'Venenoso',
         'Água', 'Água/Gelo', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Pedra/Terra', 'Psíquico', 'Psíquico',
         'Água', 'Água', 'Elétrico', 'Elétrico', 'Grama/Psíquico', 'Grama/Psíquico', 'Terra', 'Terra',
         'Lutador', 'Lutador', 'Normal', 'Venenoso', 'Venenoso', 'Pedra/Terra', 'Pedra/Terra', 'Normal',
-        'Grama', 'Água', 'Água', 'Água', 'Água/Gelo', 'Normal', 'Água/Voador', 'Água/Gelo', 'Normal',
+        'Grama', 'Água', 'Água', 'Água', 'Água/Gelo', 'Psíquico/Fada', 'Inseto/Voador', 'Água/Gelo', 'Normal',
         'Água', 'Elétrico', 'Fogo', 'Normal', 'Pedra/Água', 'Pedra/Água', 'Pedra/Água', 'Pedra/Voador',
         'Pedra/Voador', 'Normal', 'Gelo/Voador', 'Elétrico/Voador', 'Fogo/Voador', 'Dragão', 'Dragão', 'Dragão/Voador',
         'Psíquico', 'Psíquico'
     ];
-    return types[id - 1];
+    return types[id - 1] || "Tipo desconhecido";
 }
