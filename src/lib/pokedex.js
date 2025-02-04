@@ -43,13 +43,14 @@ function getPokemonType(id) {
         'Fogo', 'Água', 'Água', 'Água/Lutador', 'Psíquico', 'Psíquico', 'Psíquico', 'Lutador',
         'Lutador', 'Lutador', 'Grama/Venenoso', 'Grama/Venenoso', 'Grama/Venenoso', 'Água/Venenoso', 'Água/Venenoso',
         'Pedra/Terra', 'Pedra/Terra', 'Pedra/Terra', 'Fogo', 'Fogo', 'Água/Psíquico', 'Água/Psíquico', 'Elétrico/Aço',
-        'Elétrico/Aço', 'Normal/Voador', 'Normal/Voador', 'Água', 'Água/Gelo', 'Venenoso', 'Venenoso',
+        'Elétrico/Aço', 'Normal/Voador', 'Normal/Voador','Normal/Voador', 'Água', 'Água/Gelo', 'Venenoso', 'Venenoso',
         'Água', 'Água/Gelo', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Pedra/Terra', 'Psíquico', 'Psíquico',
         'Água', 'Água', 'Elétrico', 'Elétrico', 'Grama/Psíquico', 'Grama/Psíquico', 'Terra', 'Terra',
         'Lutador', 'Lutador', 'Normal', 'Venenoso', 'Venenoso', 'Pedra/Terra', 'Pedra/Terra', 'Normal',
-        'Grama', 'Água', 'Água', 'Água', 'Água/Gelo', 'Psíquico/Fada', 'Inseto/Voador', 'Água/Gelo', 'Normal',
-        'Água', 'Elétrico', 'Fogo', 'Normal', 'Pedra/Água', 'Pedra/Água', 'Pedra/Água', 'Pedra/Voador',
-        'Pedra/Voador', 'Normal', 'Gelo/Voador', 'Elétrico/Voador', 'Fogo/Voador', 'Dragão', 'Dragão', 'Dragão/Voador',
+        'Grama', 'Normal', 'Água', 'Água', 'Água', 'Água', 'Água', 'Água/Psíquico', 'Psíquico/Fada','Inseto/Voador',
+        'Gelo/Psíquico', 'Elétrico', 'Fogo', 'Normal', 'Normal', 'Água', 'Água', 'Água/Gelo',
+        'Pedra/Voador', 'Normal','Água','Elétrico','Fogo','Normal','Pedra/Água','Pedra/Água','Pedra/Água','Pedra/Água','Pedra/Voador',
+        'Normal','Gelo/Voador', 'Elétrico/Voador', 'Fogo/Voador', 'Dragão', 'Dragão', 'Dragão/Voador',
         'Psíquico', 'Psíquico'
     ];
     return types[id - 1] || "Tipo desconhecido";
