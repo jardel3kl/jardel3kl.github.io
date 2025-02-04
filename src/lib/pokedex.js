@@ -33,25 +33,25 @@ function getPokemonName(id) {
 function getPokemonType(id) {
     const types = [
         'Grama/Venenoso', 'Grama/Venenoso', 'Grama/Venenoso', 'Fogo', 'Fogo', 'Fogo/Voador',
-        'Água', 'Água', 'Água', 'Inseto', 'Inseto', 'Inseto/Voador',
+        'Agua', 'Agua', 'Agua', 'Inseto', 'Inseto', 'Inseto/Voador',
         'Inseto/Venenoso', 'Inseto/Venenoso', 'Inseto/Venenoso', 'Normal/Voador', 'Normal/Voador', 'Normal/Voador',
         'Normal', 'Normal', 'Normal/Voador', 'Normal/Voador', 'Venenoso', 'Venenoso',
-        'Elétrico', 'Elétrico', 'Terra', 'Terra', 'Venenoso', 'Venenoso', 'Venenoso/Terra', 'Venenoso', 'Venenoso', 'Venenoso/Terra',
+        'Eletrico', 'Eletrico', 'Terra', 'Terra', 'Venenoso', 'Venenoso', 'Venenoso/Terra', 'Venenoso', 'Venenoso', 'Venenoso/Terra',
         'Fada', 'Fada', 'Fogo', 'Fogo', 'Normal/Fada', 'Normal/Fada', 'Venenoso/Voador', 'Venenoso/Voador',
         'Grama/Venenoso', 'Grama/Venenoso', 'Grama/Venenoso', 'Inseto/Grama', 'Inseto/Grama', 'Inseto/Venenoso', 'Inseto/Venenoso', 'Terra',
-        'Terra', 'Normal', 'Normal', 'Água', 'Água', 'Lutador', 'Lutador', 'Fogo',
-        'Fogo', 'Água', 'Água', 'Água/Lutador', 'Psíquico', 'Psíquico', 'Psíquico', 'Lutador',
-        'Lutador', 'Lutador', 'Grama/Venenoso', 'Grama/Venenoso', 'Grama/Venenoso', 'Água/Venenoso', 'Água/Venenoso',
-        'Pedra/Terra', 'Pedra/Terra', 'Pedra/Terra', 'Fogo', 'Fogo', 'Água/Psíquico', 'Água/Psíquico', 'Elétrico/Aço',
-        'Elétrico/Aço', 'Normal/Voador', 'Normal/Voador','Normal/Voador', 'Água', 'Água/Gelo', 'Venenoso', 'Venenoso',
-        'Água', 'Água/Gelo', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Pedra/Terra', 'Psíquico', 'Psíquico',
-        'Água', 'Água', 'Elétrico', 'Elétrico', 'Grama/Psíquico', 'Grama/Psíquico', 'Terra', 'Terra',
+        'Terra', 'Normal', 'Normal', 'Agua', 'Agua', 'Lutador', 'Lutador', 'Fogo',
+        'Fogo', 'Agua', 'Agua', 'Agua/Lutador', 'Psiquico', 'Psiquico', 'Psiquico', 'Lutador',
+        'Lutador', 'Lutador', 'Grama/Venenoso', 'Grama/Venenoso', 'Grama/Venenoso', 'Agua/Venenoso', 'Agua/Venenoso',
+        'Pedra/Terra', 'Pedra/Terra', 'Pedra/Terra', 'Fogo', 'Fogo', 'Agua/Psiquico', 'Agua/Psiquico', 'Eletrico/Aço',
+        'Eletrico/Aço', 'Normal/Voador', 'Normal/Voador','Normal/Voador', 'Agua', 'Agua/Gelo', 'Venenoso', 'Venenoso',
+        'Agua', 'Agua/Gelo', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Fantasma/Venenoso', 'Pedra/Terra', 'Psiquico', 'Psiquico',
+        'Agua', 'Agua', 'Eletrico', 'Eletrico', 'Grama/Psiquico', 'Grama/Psiquico', 'Terra', 'Terra',
         'Lutador', 'Lutador', 'Normal', 'Venenoso', 'Venenoso', 'Pedra/Terra', 'Pedra/Terra', 'Normal',
-        'Grama', 'Normal', 'Água', 'Água', 'Água', 'Água', 'Água', 'Água/Psíquico', 'Psíquico/Fada','Inseto/Voador',
-        'Gelo/Psíquico', 'Elétrico', 'Fogo', 'Normal', 'Normal', 'Água', 'Água', 'Água/Gelo',
-        'Pedra/Voador', 'Normal','Água','Elétrico','Fogo','Normal','Pedra/Água','Pedra/Água','Pedra/Água','Pedra/Água','Pedra/Voador',
-        'Normal','Gelo/Voador', 'Elétrico/Voador', 'Fogo/Voador', 'Dragão', 'Dragão', 'Dragão/Voador',
-        'Psíquico', 'Psíquico'
+        'Grama', 'Normal', 'Agua', 'Agua', 'Agua', 'Agua', 'Agua', 'Agua/Psiquico', 'Psiquico/Fada','Inseto/Voador',
+        'Gelo/Psiquico', 'Eletrico', 'Fogo', 'Normal', 'Normal', 'Agua', 'Agua', 'Agua/Gelo',
+        'Normal', 'Normal','Agua','Eletrico','Fogo','Normal','Pedra/Agua','Pedra/Agua','Pedra/Agua','Pedra/Agua','Pedra/Voador',
+        'Normal','Gelo/Voador', 'Eletrico/Voador', 'Fogo/Voador', 'Dragao', 'Dragao', 'Dragao/Voador',
+        'Psiquico', 'Psiquico'
     ];
     return types[id - 1] || "Tipo desconhecido";
 }

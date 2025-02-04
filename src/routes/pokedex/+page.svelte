@@ -13,6 +13,7 @@
 
   // Mapa de cores para os tipos de Pokémon
   const tipoCores = {
+    normal:"#808080",
     fogo: "#F08030",
     agua: "#6890F0",
     grama: "#78C850",
@@ -30,12 +31,13 @@
     sombrio: "#705848",
     metal: "#B8B8D0",
     fada: "#EE99AC"
+    
   };
 
   // Função para obter a cor de fundo baseada no tipo do Pokémon
   function getCorDoTipo(tipo) {
     const tipoPrimario = tipo?.split('/')[0]?.toLowerCase().trim();
-    return tipoCores[tipoPrimario] || '#A8A878'; // Cor padrão se tipo não for reconhecido
+    return tipoCores[tipoPrimario] || ''; // Cor padrão se tipo não for reconhecido
   }
 
   // URL da imagem padrão para erro
